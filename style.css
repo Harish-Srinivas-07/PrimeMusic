@@ -1,0 +1,734 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, #1db954 0%, #85faae 100.2%);
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    min-height: 100vh;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.device {
+    position: relative;
+    width: 100vw;
+    max-height: fit-content;
+    max-height: 100vh;
+    max-height: 100dvh;
+    background-color: #121212;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+    color: #b3b3b3;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    border-radius: 10px 10px 0 0;
+}
+
+.device.device::-webkit-scrollbar {
+    width: 12px;
+}
+
+.device.device::-webkit-scrollbar-track {
+    background: #121212;
+    border-radius: 5px;
+}
+
+.device.device::-webkit-scrollbar-thumb {
+    background-color: #14e95e;
+    border-radius: 20px;
+    border: 2px solid #121212;
+}
+
+.device aside {
+    background-color: #000;
+    width: 225px;
+    min-height: 500vh;
+    padding: 0 6px;
+    padding-top: 24px;
+}
+
+.device aside .logo {
+    width: 100%;
+    margin-bottom: 18px;
+    padding-left: 24px;
+}
+
+.device aside .logo img {
+    width: 130px;
+}
+
+.device aside .general-options,
+.device aside .playlist-options,
+.device aside .playlists {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.device aside .playlist-options {
+    margin-top: 15px;
+}
+
+.device aside .playlist-options span {
+    padding: 8px 0;
+    padding-left: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.device aside .playlists {
+    border-top: 1px solid #f0f0f028;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+
+.device .option {
+    cursor: pointer;
+    width: 100%;
+    padding: 8px 0;
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+    transition: color 0.1s ease;
+    color: #646464;
+}
+
+.device .option i {
+    width: 40px;
+    font-size: 20px;
+}
+
+.device .option.active {
+    background-color: #f0f0f028;
+    border-radius: 4px;
+    color: #fff;
+    text-shadow: 0px 0px 15px rgba(2, 2, 2, 0.2);
+}
+
+.device .option:hover {
+    color: #fff;
+    text-shadow: 0px 0px 15px rgba(2, 2, 2, 0.2);
+}
+
+.device .container {
+    flex: 1;
+    padding: 10px 25px;
+}
+
+.device .container header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    height: 4vh;
+}
+
+.device .container header .head-btns i {
+    visibility: hidden;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.device .container header .profile {
+    width: 130px;
+    background-color: #000;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 18px;
+    font-family: "Poppins-Regular", Helvetica;
+}
+
+.device .container header .profile img {
+    width: 28px;
+    border-radius: 50%;
+}
+
+.device .container header .profile i {
+    padding-bottom: 2px;
+}
+
+.device .container .collection-strip {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.device .container .collection-strip .title-strip {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    padding-right: 30px;
+}
+
+.device .container .collection-strip .title-strip button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 15px rgba(2, 2, 2, 0.2);
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.device .container .collection-strip .title-strip button:hover {
+    text-decoration: underline;
+}
+
+.device .container .collection-strip .title-strip h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    text-shadow: 0px 0px 15px rgba(2, 2, 2, 0.2);
+}
+
+.device .container .collection-strip .inner-strip {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.device .container .collection-strip .inner-strip .box-item {
+    position: relative;
+    cursor: pointer;
+    margin-top: 18px;
+    width: 180px;
+    height: 250px;
+    margin-left: 20px;
+    background-color: #f0f0f019;
+    border-radius: 5px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.device .container .collection-strip .inner-strip .box-item .box-item__image {
+    position: relative;
+    width: 140px;
+    height: 140px;
+}
+
+.device .container .collection-strip .inner-strip .box-item .box-item__image img {
+    width: 140px;
+}
+
+.device .container .collection-strip .inner-strip .box-item h4 {
+    font-size: 1rem;
+}
+
+.device .container .collection-strip .inner-strip .box-item p {
+    font-size: 12px;
+}
+
+.device .container .collection-strip .inner-strip .box-item:hover {
+    background-color: #242424;
+}
+
+.song-control {
+    width: 100vw;
+    max-height: 100vh;
+    max-width: 100vw;
+    padding: 25px 0;
+    color: #fff;
+    background-color: #242424;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 10px 10px;
+}
+
+.song-control .song-control__inner {
+    width: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.song-control .song-control__inner .song-control__buttons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.song-control .song-control__inner .song-control__buttons i {
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 8px;
+    transition: color 0.2s ease-out;
+}
+
+.song-control .song-control__inner .song-control__buttons i:nth-child(3) {
+    font-size: 1.5rem;
+}
+
+.song-control .song-control__inner .song-control__buttons i:hover {
+    color: #14e95e;
+}
+
+.song-control .song-control__inner .song-control__timeline {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.7rem;
+}
+
+.song-control .song-control__inner .song-control__timeline .timeline {
+    position: relative;
+    width: 400px;
+    height: 4px;
+    background-color: #646464;
+    border-radius: 50px;
+}
+
+.song-control .song-control__inner .song-control__timeline .timeline .timeline-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 310px;
+    height: 4px;
+    background-color: #14e95e;
+    border-radius: 50px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.song-control__buttons i {
+    width: 24px;
+    /* Adjust this value as needed */
+    height: 24px;
+    /* Adjust this value as needed */
+    line-height: 24px;
+    /* This ensures the icon is vertically centered */
+    text-align: center;
+    /* This ensures the icon is horizontally centered */
+}
+
+.song-control__timeline {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.timeline {
+    flex: 1;
+    height: 4px;
+    background-color: #ccc;
+    margin: 0 10px;
+    position: relative;
+}
+
+.timeline-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #333;
+    /* Color for the filled portion */
+}
+
+.search-bar {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    /* Adjust as needed */
+    height: 20%;
+    /* Adjust as needed */
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgb(27.97, 26.51, 26.51) 0.01%, rgb(55.24, 52.94, 52.94) 100%);
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.search-bar input {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 70%;
+    padding: 8px 0;
+    outline: none;
+    font-size: 16px;
+    font-family: "Poppins-Regular", Helvetica;
+}
+
+/* To hide the search bar initially */
+.hidden {
+    display: none;
+}
+
+.box {
+    width: 200px;
+    height: 37px;
+}
+
+.box .group {
+    position: fixed;
+    width: 202px;
+    height: 37px;
+    top: 0;
+    left: 0;
+}
+
+.box .overlap-group {
+    position: relative;
+    width: 200px;
+    height: 37px;
+    border-radius: 30px;
+}
+
+.box .search-wrapper {
+    position: absolute;
+    width: 200px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgb(27.97, 26.51, 26.51) 0.01%, rgb(55.24, 52.94, 52.94) 100%);
+    height: 37px;
+    top: 0;
+    left: 0;
+}
+
+.box .search {
+    position: absolute;
+    width: 18px;
+    height: 15px;
+    top: 11px;
+    left: 41px;
+}
+
+.box .text-wrapper {
+    position: absolute;
+    width: 58px;
+    top: 7px;
+    left: 79px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.search-bar-home {
+    position: relative;
+    width: 300px;
+    /* Adjust as needed */
+    height: 37px;
+    /* Adjust as needed */
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgb(27.97, 26.51, 26.51) 0.01%, rgb(55.24, 52.94, 52.94) 100%);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.search-bar-home input[type="text"] {
+    background: transparent;
+    margin-left: 2vw;
+    border: none;
+    color: #fff;
+    width: 100%;
+    padding: 10px 0;
+    outline: none;
+    font-size: 16px;
+    font-family: "Poppins-Regular", Helvetica;
+}
+
+.search-bar-home,
+.search-bar input[type="text"]::placeholder {
+    color: #ccc;
+}
+
+.song-control__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.song-control__details {
+    display: flex;
+    align-items: center;
+    margin-right: 5dvw;
+}
+
+.song-control__details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* Adjust the gap between the image and text */
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Adjust the gap between the image and text */
+}
+
+.song-info img {
+    border-radius: 50%;
+    /* To make the image round */
+    margin-right: 10px;
+}
+
+.song-control__details {
+    display: none;
+}
+
+.song-control__details {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 60px;
+    /* You can adjust this width as per your design */
+}
+
+.song-control__details span {
+    display: inline-block;
+    animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.control-panel {
+    display: flex;
+    align-items: center;
+    /* Center align items vertically */
+    height: 50px;
+    /* Adjust as necessary */
+    overflow: hidden;
+    /* Hide overflow */
+    position: relative;
+    /* For positioning the song name */
+    justify-content: space-between;
+    /* Space between items */
+}
+
+.album-image {
+    align-items: center;
+    position: absolute;
+    /* Fixed position */
+    left: 50%;
+    /* Align to center */
+    transform: translateX(-50%);
+    /* Adjust to truly center align */
+}
+
+@media (max-width: 800px) {
+    .song-control .song-control__inner {
+        width: 370px;
+    }
+
+    .song-control .song-control__inner .song-control__timeline .timeline {
+        width: 300px;
+    }
+
+    .song-control .song-control__inner .song-control__timeline .timeline .timeline-fill {
+        width: 260px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .search-bar-home {
+        width: auto;
+    }
+
+    .device aside {
+        display: none;
+    }
+
+    .device .container header .head-btns i {
+        visibility: visible;
+    }
+
+    .device .container .collection-strip .inner-strip {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .device .song-control .song-control__close {
+        display: none;
+    }
+}
+
+/* Adjustments for mobile view */
+
+@media (max-width: 500px) {
+
+    body {
+        background-color: #000;
+        /* Solid black background */
+    }
+
+    /* Hide current song image */
+    .song-control__details img {
+        display: none;
+    }
+
+    /* Hide song name */
+    .song-control__details span {
+        display: none;
+    }
+
+    /* Adjust inner-strip */
+    .device .container .collection-strip .inner-strip {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        /* To evenly distribute items */
+        align-items: center;
+        padding: 10;
+        margin-left: 10%;
+    }
+
+    /* Adjust box-item for mobile view */
+    .device .container .collection-strip .inner-strip .box-item {
+        flex: 1 0 calc(70% - 10px);
+        /* Add some margin between items */
+        max-width: calc(70% - 10px);
+        /* Two items per row. Adjust margins */
+        align-items: center;
+
+        margin-bottom: 10px;
+    }
+
+    /* Ensure song-control buttons are accessible */
+    .song-control {
+        z-index: 1000;
+        /* A high value to ensure it's above other elements */
+    }
+
+    /* Adjustments for song control */
+    .song-control .song-control__buttons {
+        /* You might need to adjust positioning or add some padding/margins to ensure buttons are easily clickable */
+    }
+}
+
+/* Resetting body styles for mobile view */
+@media (max-width: 500px) {
+    body {
+        margin: 0;
+    }
+
+    /* Adjust .device to occupy whole screen */
+    .device {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        margin: 0;
+    }
+
+}
+
+/* Adjustments for audio control panel in mobile view */
+@media (max-width: 500px) {
+    .song-control {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        /* This ensures it spans the entire width */
+        padding: 15px 0;
+        background-color: #242424;
+        /* Adjust as needed */
+        border-radius: 0;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        /* Ensure it stays above other content */
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    /* Remove body styles for mobile view */
+    body {
+        margin: 0;
+    }
+
+    .device .container header {
+        padding-top: 0;
+        margin-top: 0;
+        height: auto;
+        /* This will make the height adjust based on content */
+    }
+
+}
+
+/* Default styling for desktop view */
+.desktop-bars {
+    display: block;
+}
+
+.mobile-logo {
+    display: none;
+}
+
+/* Media query for mobile view */
+@media (max-width: 768px) {
+
+    /* Adjust the breakpoint as needed */
+    .desktop-bars {
+        display: none;
+    }
+
+    .mobile-logo {
+        display: block;
+        width: 80px;
+        /* Adjust size as needed */
+        height: auto;
+    }
+}
+
+.device {
+    margin: 0;
+    padding: 0;
+}
