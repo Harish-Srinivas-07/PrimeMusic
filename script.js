@@ -363,6 +363,30 @@ document.addEventListener("DOMContentLoaded", function() {
             img.src = song.image.find(img => img.quality === "500x500").link;
             imageDiv.appendChild(img);
 
+            const boxItems = document.querySelectorAll('.box-item');
+
+boxItems.forEach(item => {
+    const playButton = document.createElement('img');
+    playButton.src = 'play.png'; // Replace with your actual path
+    playButton.className = 'play-button';
+    playButton.alt = 'Play';
+    
+    // Initially, set the play button to be hidden
+    playButton.style.display = 'none';
+    
+    // Append the play button to the box-item
+    item.appendChild(playButton);
+    
+    // Add event listener for hover effect
+    item.addEventListener('mouseover', function() {
+        playButton.style.display = 'block';
+    });
+    
+    item.addEventListener('mouseout', function() {
+        playButton.style.display = 'none';
+    });
+});
+
 
             const title = document.createElement('h4');
             title.textContent = song.name.replace(/&quot;/g, '');
