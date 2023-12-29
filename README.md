@@ -44,10 +44,10 @@ Welcome to PrimeMusic, a dynamic web application designed for streaming your fav
 2. Use the search bar to find specific songs, artists, or playlists.
 3. Control your music playback with the song control panel, featuring current play indicators and advanced playback options.
 
+## Demo 🎉
+
+Explore the PrimeMusic web application in action: [PrimeMusic Demo](https://streamaudio.netlify.app)
+
 ## Acknowledgments 🙏
 
 - A special thank you to Jio Saavn for providing the comprehensive API, enriching the PrimeMusic experience with a vast library of songs.
-
-## Feedback and Support 📣
-
-If you encounter any issues or have suggestions for improvements, please feel free to [create an issue](#) in the GitHub repository.
