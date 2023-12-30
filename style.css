@@ -12,8 +12,8 @@ body {
     font-family: "Poppins-Regular", Helvetica;
     font-size: 14px;
     font-weight: 400;
-    min-height: 100vh;
-    max-height: 100dvh;
+    min-height: 100vh;min-height: 100dvh;
+    max-height: 100vh;max-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -154,8 +154,13 @@ aside {
 }
 
 .device .container {
+    top: 0;
     flex: 1;
     padding: 10px 25px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    height: 100dvh;
 }
 
 .device .container header {
@@ -308,7 +313,7 @@ aside {
 .song-control .song-control__inner .song-control__buttons i {
     cursor: pointer;
     font-size: 1rem;
-    margin: 0 8px;
+    margin: 0 10px;
     transition: color 0.2s ease-out;
 }
 
@@ -516,7 +521,9 @@ aside {
 .song-control__details {
     display: flex;
     align-items: center;
+    margin-right: 5vw;
     margin-right: 5dvw;
+    margin-left: 225px;
 }
 
 .song-control__details {
@@ -615,6 +622,9 @@ aside {
     .device aside {
         display: none;
     }
+    .device .container{
+        top: 0;
+    }
 
     .device .container header .head-btns i {
         visibility: visible;
@@ -639,6 +649,9 @@ aside {
         /* Solid black background */
     }
 
+    .song-control__details{
+    margin-left: 0px;
+    }
     /* Hide current song image */
     .song-control__details img {
         display: none;
@@ -730,7 +743,7 @@ aside {
     .device .container header {
         padding-top: 0;
         margin-top: 0;
-        height: auto;
+        top: 0;
         /* This will make the height adjust based on content */
     }
 
@@ -746,7 +759,7 @@ aside {
 }
 
 /* Media query for mobile view */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
 
     /* Adjust the breakpoint as needed */
     .desktop-bars {
