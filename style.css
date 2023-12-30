@@ -35,6 +35,38 @@ body {
     border-radius: 10px 10px 0 0;
 }
 
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px; /* or whatever width you prefer */
+    height: 100vh; /* to make it take full height of the viewport */
+    overflow-y: auto; /* to allow scrolling if the content exceeds the viewport height */
+    background-color: #fff; /* or any background color you want */
+    z-index: 1000; /* to ensure it appears above other elements */
+}
+.title-strip,
+.inner-strip {
+    position: relative;
+    margin-left: 260px; /* Assuming the aside is 250px wide + 10px for separation */
+    /* Add other necessary styles */
+}
+@media (max-width: 500px) {
+    .title-strip,
+    .inner-strip {
+        width: 100%;
+        display: block; /* Ensures it occupies full width */
+        text-align: center; /* Center-aligns content inside the strip */
+    }
+    .title-strip,
+.inner-strip {
+    padding: 0;
+    margin: 0;
+}
+
+}
+
+
 .device.device::-webkit-scrollbar {
     width: 12px;
 }
@@ -174,12 +206,13 @@ body {
 }
 
 .device .container .collection-strip .title-strip {
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
     padding-right: 30px;
+    position: relative;
 }
 
 .device .container .collection-strip .title-strip button {
@@ -252,7 +285,7 @@ body {
     max-width: 100vw;
     padding: 25px 0;
     color: #fff;
-    background-color: #242424;
+    background: linear-gradient(180deg, rgb(27.97, 26.51, 26.51) 0.01%, rgb(55.24, 52.94, 52.94) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -677,7 +710,7 @@ body {
         width: 100%;
         /* This ensures it spans the entire width */
         padding: 15px 0;
-        background-color: #242424;
+        background-color: linear-gradient(180deg, rgb(27.97, 26.51, 26.51) 0.01%, rgb(55.24, 52.94, 52.94) 100%);
         /* Adjust as needed */
         border-radius: 0;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
