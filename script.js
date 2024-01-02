@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const timeline = document.querySelector('.timeline');
 
     pauseButton.classList.add('hidden');
+
     playButton.addEventListener('click', function() {
         audioPlayer.play();
         toggleButtons();
@@ -70,7 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const headBtns = document.getElementById('headBtns');
 
         function toggleIcons() {
-            if (window.innerWidth <= 768) { // Adjust the breakpoint as needed
+            if (window.innerWidth <= 768) {
+                // Adjust the breakpoint as needed
                 mobileLogo.style.display = 'block';
                 desktopBars.style.display = 'none';
             } else {
@@ -102,15 +104,18 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('searchInput').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             const searchText = document.getElementById('searchInput').value.trim();
+
             if (searchText) {
                 fetchSongs(searchText);
                 toggleSearchBars();
             }
         }
     });
+
     document.getElementById('searchome').addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             const searchTexts = document.getElementById('searchome').value.trim();
+
             if (searchTexts) {
                 fetchSongs(searchTexts);
             }
@@ -130,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const randomSong = songs[randomIndex];
         simulateClick(randomSong);
     });
+
     audioPlayer.addEventListener('ended', function() {
         // Trigger the random button click
         randomButton.click();
@@ -146,24 +152,25 @@ document.addEventListener("DOMContentLoaded", function() {
         audioPlayer.load();
 
         // Fetch song details
-        fetch(songSrc)
-            .then(response => response.blob())
-            .then(blob => {
-                const audioObject = new Audio();
-                audioObject.src = URL.createObjectURL(blob);
-                return new Promise(resolve => {
-                    audioObject.onloadedmetadata = () => {
-                        resolve(audioObject.duration);
-                    };
-                });
-            })
-            .then(songDuration => {
-                duration = Math.floor(songDuration); // Set the duration
-                timelineEnd.textContent = formatTime(duration); // Update the timelineEnd display
-            })
-            .catch(error => {
-                console.error("Error fetching song duration:", error);
+        fetch(songSrc).then(response => response.blob()).then(blob => {
+            const audioObject = new Audio();
+            audioObject.src = URL.createObjectURL(blob);
+
+            return new Promise(resolve => {
+                audioObject.onloadedmetadata = () => {
+                    resolve(audioObject.duration);
+                }
+
+                ;
             });
+
+        }).then(songDuration => {
+            duration = Math.floor(songDuration); // Set the duration
+            timelineEnd.textContent = formatTime(duration); // Update the timelineEnd display
+
+        }).catch(error => {
+            console.error("Error fetching song duration:", error);
+        });
 
         // Fetch song name and image details
         const songName = songElement.querySelector('h4').textContent;
@@ -172,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update control panel with fetched details
         document.getElementById('currentSongImg').src = songImgSrc;
         document.getElementById('currentSongName').textContent = songName;
+
 
         const songNameElement = document.getElementById('currentSongName');
         songNameElement.textContent = songName;
@@ -184,15 +192,20 @@ document.addEventListener("DOMContentLoaded", function() {
             // If it doesn't exceed, remove animation
             songNameElement.innerHTML = songName;
         }
+
         // Play the song
         audioPlayer.play().then(() => {
             playButton.classList.add('hidden');
             pauseButton.classList.remove('hidden');
+            const mobplayButton = document.querySelector('.play-button-circled');
+            mobplayButton.classList.add('hidden');
+            mobpauseButton.classList.remove('hidden');
+
         }).catch((error) => {
             console.error("Playback failed:", error);
         });
     }
-    
+
     // Forward button
     forwardButton.addEventListener('click', function() {
         const songs = Array.from(document.querySelectorAll('.box-item'));
@@ -248,15 +261,19 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('Vikram').addEventListener('click', function() {
         fetchSongs('Vikram');
     });
+
     document.getElementById('Jawan').addEventListener('click', function() {
         fetchSongs('Jawan');
     });
+
     document.getElementById('Sethupathi').addEventListener('click', function() {
         fetchSongs('Vijay Sethupathi');
     });
+
     document.getElementById('LoveToday').addEventListener('click', function() {
         fetchSongs('Love+Today');
     });
+
     document.getElementById('VelaiIllaPadathari').addEventListener('click', function() {
         fetchSongs('Velai+Illa+Padathari');
     });
@@ -264,15 +281,16 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('Home').addEventListener('click', function() {
         fetchSongs('tamil 2023');
     });
+
     document.getElementById('Library').addEventListener('click', function() {
         fetchSongs('Tamil+2022');
     });
 
-    // ... Do this for each playlist option
 
     // Function to remove active class from all options
     function removeActiveClassFromOptions() {
         const options = document.querySelectorAll('.option');
+
         options.forEach(option => {
             option.classList.remove('active');
         });
@@ -283,6 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
         removeActiveClassFromOptions();
         this.classList.add('active');
     });
+
     document.getElementById('Library').addEventListener('click', function() {
         removeActiveClassFromOptions();
         this.classList.add('active');
@@ -324,6 +343,8 @@ document.addEventListener("DOMContentLoaded", function() {
         this.classList.add('active');
     });
     pauseButton.classList.add('hidden');
+    const mobpauseButton = document.querySelector('.pause-circled');
+    mobpauseButton.classList.add('hidden');
 
 
     function fetchSongs(playlistName) {
@@ -331,23 +352,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const query = playlistName.toLowerCase().replace(/\s+/g, ''); // Convert to lowercase and remove spaces
         const url = `${baseUrl}${query}+tamil&page=1&limit=60`;
 
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                const innerStrip = document.querySelector('.inner-strip');
-                innerStrip.innerHTML = '';
-                populateBoxItems(data.data.results);
-            })
-            .catch(error => console.error("Error fetching data:", error));
+        fetch(url).then(response => response.json()).then(data => {
+            const innerStrip = document.querySelector('.inner-strip');
+            innerStrip.innerHTML = '';
+            populateBoxItems(data.data.results);
+        }).catch(error => console.error("Error fetching data:", error));
     }
 
     // jailer playlist
-    fetch("https://saavn.me/search/songs?query=tamil+2023&page=1&limit=80")
-        .then(response => response.json())
-        .then(data => {
-            populateBoxItems(data.data.results);
-        })
-        .catch(error => console.error("Error fetching data:", error));
+    fetch("https://saavn.me/search/songs?query=tamil+2023&page=1&limit=80").then(response => response.json()).then(data => {
+        populateBoxItems(data.data.results);
+    }).catch(error => console.error("Error fetching data:", error));
 
 
     function populateBoxItems(songs) {
@@ -363,35 +378,39 @@ document.addEventListener("DOMContentLoaded", function() {
             img.src = song.image.find(img => img.quality === "500x500").link;
             imageDiv.appendChild(img);
 
+            
             const boxItems = document.querySelectorAll('.box-item');
 
-boxItems.forEach(item => {
-    const playButton = document.createElement('img');
-    playButton.src = 'play.png'; // Replace with your actual path
-    playButton.className = 'play-button';
-    playButton.alt = 'Play';
-    
-    // Initially, set the play button to be hidden
-    playButton.style.display = 'none';
-    
-    // Append the play button to the box-item
-    item.appendChild(playButton);
-    
-    // Add event listener for hover effect
-    item.addEventListener('mouseover', function() {
-        playButton.style.display = 'block';
-    });
-    
-    item.addEventListener('mouseout', function() {
-        playButton.style.display = 'none';
-    });
-});
+            boxItems.forEach(item => {
+                const playButton = document.createElement('img');
+                playButton.src = 'play.png'; // Replace with your actual path
+                playButton.className = 'play-button';
+                playButton.alt = 'Play';
+
+                // Initially, set the play button to be hidden
+                playButton.style.display = 'none';
+
+                // Append the play button to the box-item
+                item.appendChild(playButton);
+
+                // Add event listener for hover effect
+                item.addEventListener('mouseover', function() {
+                    playButton.style.display = 'block';
+                });
+
+                item.addEventListener('mouseout', function() {
+                    playButton.style.display = 'none';
+                });
+            });
 
 
             const title = document.createElement('h4');
-            title.textContent = song.name.replace(/&quot;/g, '');
+            title.textContent = song.name.replace(/&quot; /g, '');
 
             const albumInfo = document.createElement('p');
+            albumInfo.textContent = song.album.name.replace(/&quot; /g, '');
+            
+            title.textContent = song.name.replace(/&quot;/g, '');
             albumInfo.textContent = song.album.name.replace(/&quot;/g, '');
 
             const songSrc = document.createElement('p');
@@ -408,27 +427,31 @@ boxItems.forEach(item => {
             boxItem.addEventListener('click', function() {
                 const songSrc = this.querySelector('p[style="display: none;"]').textContent;
                 audioPlayer.src = songSrc;
+                const mobplayButton = document.querySelector('.play-button-circled');
+                mobplayButton.classList.add('hidden');
                 audioPlayer.load();
+                toggleButtons();
 
                 // Fetch song details
-                fetch(songSrc)
-                    .then(response => response.blob())
-                    .then(blob => {
-                        const audioObject = new Audio();
-                        audioObject.src = URL.createObjectURL(blob);
-                        return new Promise(resolve => {
-                            audioObject.onloadedmetadata = () => {
-                                resolve(audioObject.duration);
-                            };
-                        });
-                    })
-                    .then(songDuration => {
-                        duration = Math.floor(songDuration); // Set the duration
-                        timelineEnd.textContent = formatTime(duration); // Update the timelineEnd display
-                    })
-                    .catch(error => {
-                        console.error("Error fetching song duration:", error);
+                fetch(songSrc).then(response => response.blob()).then(blob => {
+                    const audioObject = new Audio();
+                    audioObject.src = URL.createObjectURL(blob);
+
+                    return new Promise(resolve => {
+                        audioObject.onloadedmetadata = () => {
+                            resolve(audioObject.duration);
+                        }
+
+                        ;
                     });
+
+                }).then(songDuration => {
+                    duration = Math.floor(songDuration); // Set the duration
+                    timelineEnd.textContent = formatTime(duration); // Update the timelineEnd display
+
+                }).catch(error => {
+                    console.error("Error fetching song duration:", error);
+                });
 
                 // Fetch song name and image details
                 const songName = this.querySelector('h4').textContent;
@@ -438,8 +461,14 @@ boxItems.forEach(item => {
                 document.getElementById('currentSongImg').src = songImgSrc;
                 document.getElementById('currentSongName').textContent = songName;
 
+                document.getElementById('mobcurrentSongImg').src = songImgSrc;
+                document.getElementById('mobcurrentSongName').textContent = songName;
+
+
                 // Show the song details in the control panel
                 document.querySelector('.song-control__details').style.display = 'block';
+
+
 
                 const songNameElement = document.getElementById('currentSongName');
                 songNameElement.textContent = songName;
@@ -452,15 +481,63 @@ boxItems.forEach(item => {
                     // If it doesn't exceed, remove animation
                     songNameElement.innerHTML = songName;
                 }
+
                 // Play the song
                 audioPlayer.play().then(() => {
                     playButton.classList.add('hidden');
                     pauseButton.classList.remove('hidden');
+                    mobplayButton.classList.add('hidden');
+                    mobpauseButton.classList.remove('hidden');
+
                 }).catch((error) => {
                     console.error("Playback failed:", error);
                 });
             });
         });
 
+    }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const audioPlayer = document.getElementById('audioPlayer');
+    const mobplayButton = document.querySelector('.play-button-circled');
+    const mobpauseButton = document.querySelector('.pause-circled');
+    const mobrandomButton = document.querySelector('.shuffle');
+
+    mobpauseButton.classList.add('hidden');
+
+    mobplayButton.addEventListener('click', function() {
+        audioPlayer.play();
+        toggleButtons();
+    });
+
+    mobpauseButton.addEventListener('click', function() {
+        audioPlayer.pause();
+        toggleButtons();
+    });
+
+    function toggleButtons() {
+        mobplayButton.classList.toggle('hidden');
+        mobpauseButton.classList.toggle('hidden');
+    }
+
+    mobrandomButton.addEventListener('click', function() {
+        const songs = Array.from(document.querySelectorAll('.box-item'));
+        const randomIndex = Math.floor(Math.random() * songs.length);
+        const randomSong = songs[randomIndex];
+        mobsimulateClick(randomSong);
+    });
+
+    audioPlayer.addEventListener('ended', function() {
+        // Trigger the random button click
+        mobrandomButton.click();
+    });
+
+    function mobsimulateClick(element) {
+        element.dispatchEvent(new MouseEvent('click', {
+            bubbles: true,
+            cancelable: true,
+            view: window
+        }));
     }
 });
