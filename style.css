@@ -12,8 +12,10 @@ body {
     font-family: "Poppins-Regular", Helvetica;
     font-size: 14px;
     font-weight: 400;
-    min-height: 100vh;min-height: 100dvh;
-    max-height: 100vh;max-height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,37 +34,48 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
-    border-radius: 10px 10px 0 0;
 }
 
 aside {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px; /* or whatever width you prefer */
-    height: 100vh; /* to make it take full height of the viewport */
-    overflow-y: auto; /* to allow scrolling if the content exceeds the viewport height */
-    background-color: #fff; /* or any background color you want */
-    z-index: 1000; /* to ensure it appears above other elements */
+    width: 250px;
+    /* or whatever width you prefer */
+    height: 100vh;
+    /* to make it take full height of the viewport */
+    overflow-y: auto;
+    /* to allow scrolling if the content exceeds the viewport height */
+    background-color: #fff;
+    /* or any background color you want */
+    z-index: 1000;
+    /* to ensure it appears above other elements */
 }
+
 .title-strip,
 .inner-strip {
     position: relative;
-    margin-left: 260px; /* Assuming the aside is 250px wide + 10px for separation */
+    margin-left: 260px;
+    /* Assuming the aside is 250px wide + 10px for separation */
     /* Add other necessary styles */
 }
+
 @media (max-width: 500px) {
+
     .title-strip,
     .inner-strip {
         width: 100%;
-        display: block; /* Ensures it occupies full width */
-        text-align: center; /* Center-aligns content inside the strip */
+        display: block;
+        /* Ensures it occupies full width */
+        text-align: center;
+        /* Center-aligns content inside the strip */
     }
+
     .title-strip,
-.inner-strip {
-    padding: 0;
-    margin: 0;
-}
+    .inner-strip {
+        padding: 0;
+        margin: 0;
+    }
 
 }
 
@@ -260,6 +273,13 @@ aside {
     justify-content: space-between;
     flex-direction: column;
     padding: 20px;
+}
+
+@media (min-width: 700px) {
+    .device .container .collection-strip .inner-strip .box-item {
+        background-color: #00000019;
+        /* Set the background color to black for PC version */
+    }
 }
 
 .device .container .collection-strip .inner-strip .box-item .box-item__image {
@@ -547,9 +567,6 @@ aside {
     margin-right: 10px;
 }
 
-.song-control__details {
-    display: none;
-}
 
 .song-control__details {
     overflow: hidden;
@@ -622,7 +639,8 @@ aside {
     .device aside {
         display: none;
     }
-    .device .container{
+
+    .device .container {
         top: 0;
     }
 
@@ -649,18 +667,11 @@ aside {
         /* Solid black background */
     }
 
-    .song-control__details{
-    margin-left: 0px;
-    }
-    /* Hide current song image */
-    .song-control__details img {
-        display: none;
+    .song-control__details {
+        margin-left: 0px;
     }
 
-    /* Hide song name */
-    .song-control__details span {
-        display: none;
-    }
+
 
     /* Adjust inner-strip */
     .device .container .collection-strip .inner-strip {
@@ -776,18 +787,154 @@ aside {
 
 .play-button {
     position: absolute;
-    bottom: 5px;      /* Positioned 5px from the bottom */
-    right: 5px;       /* Positioned 5px from the right */
-    width: 60px;      /* Set width */
-    height: 60px;     /* Set height */
+    bottom: 5px;
+    /* Positioned 5px from the bottom */
+    right: 5px;
+    /* Positioned 5px from the right */
+    width: 60px;
+    /* Set width */
+    height: 60px;
+    /* Set height */
     display: none;
     z-index: 10;
     padding: 5px;
-    border-radius: 50%; 
-    cursor: pointer;  /* Optional: Change cursor on hover */
+    border-radius: 50%;
+    cursor: pointer;
+    /* Optional: Change cursor on hover */
 }
 
 .box-item {
     position: relative;
     z-index: 1;
+}
+
+/*mobile player */
+
+/* Adjustments for the mobile player */
+
+.play {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.play .div {
+    background-color: rgba(255, 255, 255, 1);
+    background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(107.66, 104.22, 104.22) 100%);
+    overflow-x: hidden;
+    width: 100%;
+    height: 75px;
+    position: relative;
+}
+
+.play .song-img {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    top: 15px;
+    left: 21px;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+}
+
+.play .group {
+    position: absolute;
+    width: 150px;
+    height: 31px;
+    top: 25px;
+    left: 25%;
+}
+
+.play .text-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: "Poppins-Regular", Helvetica;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+
+.play .play-button-circled {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 3px;
+    right: 5%;
+    background-image: url('./img/play-button-circled.png');
+    /* Path to your play button image */
+    background-size: 100% 100%;
+}
+
+.play .pause-circled {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 3px;
+    right: 5%;
+    background-image: url('./img/pause.png');
+    /* Path to your pause button image */
+    background-size: 100% 100%;
+}
+
+.play .shuffle {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 18px;
+    right: 23%;
+    background-image: url('./img/shuffle.png');
+    /* Path to your shuffle image */
+    background-size: 100% 100%;
+}
+
+.play .rectangle {
+    width: 90%;
+    height: 1px;
+    background-color: #d9d9d9;
+    border-radius: 19px;
+}
+
+/* Default styles for the song-control */
+.song-control {
+    display: none;
+    /* Hide the song-control by default */
+}
+
+.play {
+    display: none;
+    /* Hide the mobile player by default */
+}
+
+/* Media query to target screens smaller than 768px (typical tablet and mobile sizes) */
+@media (max-width: 700px) {
+    .song-control {
+        display: none;
+        /* Hide the song-control on smaller screens */
+    }
+
+    .play {
+        display: block;
+        /* Show the mobile player on smaller screens */
+    }
+}
+
+/* Media query to target screens larger than 768px (typical PC sizes) */
+@media (min-width: 700px) {
+    .song-control {
+        display: flex;
+        /* Show the song-control on larger screens (PCs) */
+    }
+
+    .play {
+        display: none;
+        /* Hide the mobile player on larger screens */
+    }
 }
