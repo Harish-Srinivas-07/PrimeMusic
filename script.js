@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     function fetchSongs(playlistName) {
-        const baseUrl = "https://saavn.me/search/songs?query=";
+        const baseUrl = "https://saavn.dev/search/songs?query=";
         const query = playlistName.toLowerCase().replace(/\s+/g, ''); // Convert to lowercase and remove spaces
         const url = `${baseUrl}${query}+tamil&page=1&limit=60`;
 
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // jailer playlist
-    fetch("https://saavn.me/search/songs?query=tamil+2023&page=1&limit=80")
+    fetch("https://saavn.dev/search/songs?query=tamil+2023&page=1&limit=80")
         .then(response => response.json())
         .then(data => {
             populateBoxItems(data.data.results);
