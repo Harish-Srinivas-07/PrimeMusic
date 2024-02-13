@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 boxItems.forEach(item => {
     const playButton = document.createElement('img');
-    playButton.src = 'play.png'; // Replace with your actual path
+    playButton.src = 'img/play.png'; // Replace with your actual path
     playButton.className = 'play-button';
     playButton.alt = 'Play';
     
